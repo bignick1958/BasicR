@@ -27,3 +27,22 @@ ggplot(data,                         # Draw barplot with grouping & stacking
            fill = name)) + 
   geom_bar(stat = "identity",
            position = "stack", width = .1)
+
+library(tidyverse)
+
+alluvia <- data %>%
+  group_by(name) %>%
+  summarize(x = seq(1, 2, 0.01),
+            val = pnorm(x, 1.5, 0.15) * diff(val) + first(val))
+
+ggplot(data,                        
+       aes(x = as.numeric(factor(group)),
+           y = val,
+           fill = name)) +
+  geom_bar(stat = "identity",
+           position = "stack", width = .1) +
+  geom_area(data = alluvia, aes(x = x), position = "stack", alpha = 0.5) +
+  scale_x_continuous(breaks = 1:2, labels = levels(factor(data$group)),
+                     name = "Group", expand = c(0.25, 0.25)) +
+  scale_fill_brewer(palette = "Set2") +
+  theme_light(base_size = 20)
