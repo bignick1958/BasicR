@@ -104,6 +104,46 @@ plot(height, weight)
 
 dev.off()
 
+diamonds <-read.csv("C:/work/DataAnalyst/BasicR/P1_diamonds.csv", header = TRUE)
+head(diamonds)
+
+typeof(diamonds)
+
+hist(diamonds$price)
+
+hist(diamonds$price,
+     breaks = 150,
+     col = "#00ff00")
+
+colors <- table(diamonds$color)
+colors
+barplot(colors, col = "#cc0000")
+
+# Чистота
+clarityD <- table(diamonds$clarity )
+clarityD
+barplot(clarityD, col = "#f57e13")
+
+# распределение по весу 
+hist(diamonds$carat,
+     breaks = 100,
+     col = "#ffaaff",
+     lwd = 3,
+     main = "Гистограмма распределения по весу бриллиантов",
+     xlab = "вес, карат",
+     ylab = "частота")
+#     
+colnames(volatility)<-c("Дата", "Волатильность")
+plot (volatility$Дата, volatility$Волатильность,
+      xlab = "Дата",
+      ylab =  "Объемы торгов",
+      main = "Волатильность торгов по паре EURO/USD",
+      type = "o",
+      col = "#00aaff")
+legend("bottomleft", "Январь 2022")
+         
+
+
 
 
 
