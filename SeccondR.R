@@ -132,11 +132,11 @@ hist(diamonds$carat,
      main = "Гистограмма распределения по весу бриллиантов",
      xlab = "вес, карат",
      ylab = "частота")
-#     
+# Волатильность EURO/USD  
 colnames(volatility)<-c("Дата", "Волатильность")
 plot (volatility$Дата, volatility$Волатильность,
       xlab = "Дата",
-      ylab =  "Объемы торгов",
+      ylab =  "Объемы торгов, контрактов",
       main = "Волатильность торгов по паре EURO/USD",
       type = "o",
       col = "#00aaff")
